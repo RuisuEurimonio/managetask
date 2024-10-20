@@ -7,9 +7,7 @@ package metricas.demo.Service;
 
 import java.util.List;
 import metricas.demo.CustomExceptions.CustomException;
-import metricas.demo.Model.Lista;
 import metricas.demo.Model.Prioridad;
-import metricas.demo.Repository.ListaR;
 import metricas.demo.Repository.PrioridadR;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +18,6 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class PrioridadS {
-    
     
     @Autowired
     private PrioridadR prioridadR;

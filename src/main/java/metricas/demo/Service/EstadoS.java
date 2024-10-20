@@ -7,9 +7,7 @@ package metricas.demo.Service;
 
 import java.util.List;
 import metricas.demo.CustomExceptions.CustomException;
-import metricas.demo.Model.Color;
 import metricas.demo.Model.Estado;
-import metricas.demo.Repository.ColorR;
 import metricas.demo.Repository.EstadoR;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

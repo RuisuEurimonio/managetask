@@ -7,9 +7,7 @@ package metricas.demo.Service;
 
 import java.util.List;
 import metricas.demo.CustomExceptions.CustomException;
-import metricas.demo.Model.Prioridad;
 import metricas.demo.Model.Rol;
-import metricas.demo.Repository.PrioridadR;
 import metricas.demo.Repository.RolR;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +19,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class RolS {
     
-    
     @Autowired
     private RolR rolR;
     
@@ -30,24 +27,24 @@ public class RolS {
     }
     
     public Rol getById(Integer id){
-        Rol rol = rolR.getById(id).orElseThrow(()-> new CustomException("No se encontró la prioridad"));
+        Rol rol = rolR.getById(id).orElseThrow(()-> new CustomException("No se encontró el rol"));
         return rol;
     }
     
-    public Rol createLista(Rol rol){
+    public Rol createRol(Rol rol){
         return rolR.createRol(rol);
     }
     
-    public Rol updateLista(Rol rol){
-        Rol rolDB = rolR.getById(rol.getId()).orElseThrow(()-> new CustomException("No se encontro la prioridad"));
+    public Rol updateRol(Rol rol){
+        Rol rolDB = rolR.getById(rol.getId()).orElseThrow(()-> new CustomException("No se encontro el rol"));
         if(rol.getName() != null) {rolDB.setName(rol.getName());}
         if(rol.getDescription() != null) {rolDB.setDescription(rol.getDescription());}
         return rolR.updateRol(rolDB);
     }
     
-    public void deleteLista(Integer id){
-        rolR.getById(id).orElseThrow(()-> new CustomException("No se encontro la prioridad"));
-        rolR.deletePrioridad(id);
+    public void deleteRol(Integer id){
+        rolR.getById(id).orElseThrow(()-> new CustomException("No se encontro el rol"));
+        rolR.deleteRol(id);
     }
     
 }

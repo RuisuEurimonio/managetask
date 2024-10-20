@@ -22,7 +22,6 @@ public class ListaR {
     @Autowired
     private ListaJR listaJR;
     
-    
     public List<Lista> getAll(){
         return listaJR.findAll();
     }

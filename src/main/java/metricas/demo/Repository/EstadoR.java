@@ -7,9 +7,7 @@ package metricas.demo.Repository;
 
 import java.util.List;
 import java.util.Optional;
-import metricas.demo.JpaRepository.ColorJR;
 import metricas.demo.JpaRepository.EstadoJR;
-import metricas.demo.Model.Color;
 import metricas.demo.Model.Estado;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,7 +21,6 @@ public class EstadoR {
     
     @Autowired
     private EstadoJR estadoJR;
-    
     
     public List<Estado> getAll(){
         return estadoJR.findAll();

@@ -22,7 +22,6 @@ public class RolR {
     @Autowired
     private RolJR rolJR;
     
-    
     public List<Rol> getAll(){
         return rolJR.findAll();
     }

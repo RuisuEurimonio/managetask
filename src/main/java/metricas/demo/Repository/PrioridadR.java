@@ -7,9 +7,7 @@ package metricas.demo.Repository;
 
 import java.util.List;
 import java.util.Optional;
-import metricas.demo.JpaRepository.ListaJR;
 import metricas.demo.JpaRepository.PrioridadJR;
-import metricas.demo.Model.Lista;
 import metricas.demo.Model.Prioridad;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

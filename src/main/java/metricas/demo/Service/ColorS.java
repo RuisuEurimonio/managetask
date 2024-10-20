@@ -22,7 +22,6 @@ public class ColorS {
     @Autowired
     private ColorR colorR;
     
-    
     public List<Color> getAll(){
         return colorR.getAll();
     }
