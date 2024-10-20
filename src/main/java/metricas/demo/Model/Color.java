@@ -29,7 +29,7 @@ public class Color {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idCategoria", nullable = false)
+    @Column(name = "idColor", nullable = false)
     private Integer id;
     
     @Column(name = "nombre", nullable = false)

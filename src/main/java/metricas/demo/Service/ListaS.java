@@ -41,6 +41,7 @@ public class ListaS {
         Lista listaDB = listaR.getById(lista.getId()).orElseThrow(()-> new CustomException("No se encontro la lista"));
         if(lista.getName() != null) {listaDB.setName(lista.getName());}
         if(lista.getDescription() != null) {listaDB.setDescription(lista.getDescription());}
+        if(lista.getOrden()!= null) {listaDB.setOrden(lista.getOrden());}
         return listaR.updateLista(listaDB);
     }
     

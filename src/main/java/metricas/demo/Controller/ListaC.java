@@ -7,7 +7,9 @@ package metricas.demo.Controller;
 
 import java.util.List;
 import metricas.demo.Model.Estado;
+import metricas.demo.Model.Lista;
 import metricas.demo.Service.EstadoS;
+import metricas.demo.Service.ListaS;
 import metricas.demo.Validations.OnCreate;
 import metricas.demo.Validations.OnUpdate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,31 +36,31 @@ import org.springframework.web.bind.annotation.RestController;
 public class ListaC {
     
     @Autowired
-    private EstadoS estadoS;
+    private ListaS listaS;
     
     @GetMapping("/all")
-    public ResponseEntity<List<Estado>> getAll(){
-        return ResponseEntity.status(HttpStatus.OK).body(estadoS.getAll());
+    public ResponseEntity<List<Lista>> getAll(){
+        return ResponseEntity.status(HttpStatus.OK).body(listaS.getAll());
     }
     
     @GetMapping("/id/{id}")
-    public ResponseEntity<Estado> getById(@PathVariable("id") Integer id){
-        return ResponseEntity.status(HttpStatus.OK).body(estadoS.getById(id));
+    public ResponseEntity<Lista> getById(@PathVariable("id") Integer id){
+        return ResponseEntity.status(HttpStatus.OK).body(listaS.getById(id));
     }
     
     @PostMapping("/create")
-    public ResponseEntity<Estado> createColor(@Validated(OnCreate.class) @RequestBody Estado estado){
-        return ResponseEntity.status(HttpStatus.CREATED).body(estadoS.createEstado(estado));
+    public ResponseEntity<Lista> createColor(@Validated(OnCreate.class) @RequestBody Lista lista){
+        return ResponseEntity.status(HttpStatus.CREATED).body(listaS.createLista(lista));
     }
     
     @PutMapping("/update")
-    public ResponseEntity<Estado> updateColor(@Validated(OnUpdate.class) @RequestBody Estado estado){
-        return ResponseEntity.status(HttpStatus.CREATED).body(estadoS.updateEstado(estado));
+    public ResponseEntity<Lista> updateColor(@Validated(OnUpdate.class) @RequestBody Lista lista){
+        return ResponseEntity.status(HttpStatus.CREATED).body(listaS.updateLista(lista));
     }
     
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteColor(@PathVariable("id") Integer id){
-        estadoS.deleteEstado(id);
+        listaS.deleteLista(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Se elimino el estado con id: "+id);
     }
     

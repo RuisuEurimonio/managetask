@@ -29,7 +29,7 @@ public class Lista {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idCategoria", nullable = false)
+    @Column(name = "idLista", nullable = false)
     private Integer id;
     
     @Column(name = "nombre", nullable = false)
