@@ -11,29 +11,32 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import java.util.List;
+import java.time.LocalDateTime;
 import lombok.Data;
 import metricas.demo.Validations.OnCreate;
 import metricas.demo.Validations.OnUpdate;
+import org.hibernate.annotations.CreationTimestamp;
 
 /**
  *
  * @author Ruisu's
  */
 @Entity
-@Table(name="lista")
+@Table(name = "tablero")
 @Data
-public class Lista {
+public class Tablero {
+    
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idLista", nullable = false)
+    @Column(name = "idTablero", nullable = false)
     private Integer id;
     
     @Column(name = "nombre", nullable = false)
@@ -48,14 +51,13 @@ public class Lista {
     @NotNull(message = "Ingrese una descripcion", groups = OnCreate.class)
     private String description;
     
-    @Column(name = "orden", nullable = false)
-    @Size(min = 5, max = 200, message = "Ingrese un orden valida", groups = {OnUpdate.class, OnCreate.class})
-    @NotBlank(message = "Ingrese un orden", groups = OnCreate.class)
-    @NotNull(message = "Ingrese un orden", groups = OnCreate.class)
-    private String orden;
+    @Column(name = "fechaCreacion", nullable = false)
+    @CreationTimestamp
+    private LocalDateTime fechaCreacion;
     
-    @OneToMany(mappedBy = "lista")
-    @JsonIgnoreProperties("lista")
-    private List<Tablero> tableros;
+    @ManyToOne()
+    @JoinColumn(name = "lista_idLista", nullable = false)
+    @JsonIgnoreProperties("tableros")
+    private Lista lista;
     
 }
