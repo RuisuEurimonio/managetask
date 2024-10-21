@@ -11,12 +11,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import java.util.List;
 import lombok.Data;
 import metricas.demo.Validations.OnCreate;
 import metricas.demo.Validations.OnUpdate;
@@ -26,13 +26,13 @@ import metricas.demo.Validations.OnUpdate;
  * @author Ruisu's
  */
 @Entity
-@Table(name = "rol")
+@Table(name = "usuario")
 @Data
-public class Rol {
+public class Usuario {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idRol", nullable = false)
+    @Column(name = "idUsuario", nullable = false)
     private Integer id;
     
     @Column(name = "nombre", nullable = false)
@@ -41,14 +41,21 @@ public class Rol {
     @NotNull(message = "Ingrese un nombre", groups = OnCreate.class)
     private String name;
     
-    @Column(name = "descripcion", nullable = false)
+    @Column(name = "email", nullable = false)
     @Size(min = 5, max = 200, message = "Ingrese una descripcion valida", groups = {OnUpdate.class, OnCreate.class})
     @NotBlank(message = "Ingrese una descripcion", groups = OnCreate.class)
     @NotNull(message = "Ingrese una descripcion", groups = OnCreate.class)
-    private String description;
+    private String email;
     
-    @OneToMany(mappedBy = "rol")
-    @JsonIgnoreProperties("rol")
-    private List<Usuario> usuarios;
+    @Column(name = "contrasena", nullable = false)
+    @Size(min = 5, max = 200, message = "Ingrese una descripcion valida", groups = {OnUpdate.class, OnCreate.class})
+    @NotBlank(message = "Ingrese una descripcion", groups = OnCreate.class)
+    @NotNull(message = "Ingrese una descripcion", groups = OnCreate.class)
+    private String password;
+
+    @ManyToOne()
+    @JoinColumn(name = "rol_idRol", nullable = false)
+    @JsonIgnoreProperties("usuarios")
+    private Rol rol;
     
 }
