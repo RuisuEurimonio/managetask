@@ -13,29 +13,27 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import java.time.LocalDateTime;
+import metricas.demo.Model.Color;
 import lombok.Data;
 import metricas.demo.Validations.OnCreate;
 import metricas.demo.Validations.OnUpdate;
-import org.hibernate.annotations.CreationTimestamp;
 
 /**
  *
  * @author Ruisu's
  */
 @Entity
-@Table(name = "tablero")
+@Table(name = "etiqueta")
 @Data
-public class Tablero {
+public class Etiqueta {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idTablero", nullable = false)
+    @Column(name = "idEtiqueta", nullable = false)
     private Integer id;
     
     @Column(name = "nombre", nullable = false)
@@ -44,19 +42,10 @@ public class Tablero {
     @NotNull(message = "Ingrese un nombre", groups = OnCreate.class)
     private String name;
     
-    @Column(name = "descripcion", nullable = false)
-    @Size(min = 5, max = 200, message = "Ingrese una descripcion valida", groups = {OnUpdate.class, OnCreate.class})
-    @NotBlank(message = "Ingrese una descripcion", groups = OnCreate.class)
-    @NotNull(message = "Ingrese una descripcion", groups = OnCreate.class)
-    private String description;
-    
-    @Column(name = "fechaCreacion", nullable = false)
-    @CreationTimestamp
-    private LocalDateTime fechaCreacion;
-    
     @ManyToOne()
-    @JoinColumn(name = "lista_idLista", nullable = false)
-    @JsonIgnoreProperties("tableros")
-    private Lista lista;
+    @JoinColumn(name = "color_idColor", nullable = false)
+    @JsonIgnoreProperties("etiquetas")
+    private Color color;
+    
     
 }

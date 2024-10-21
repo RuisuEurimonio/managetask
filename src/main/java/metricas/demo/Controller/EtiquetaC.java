@@ -6,8 +6,10 @@
 package metricas.demo.Controller;
 
 import java.util.List;
-import metricas.demo.Model.Color;
-import metricas.demo.Service.ColorS;
+import metricas.demo.Model.Etiqueta;
+import metricas.demo.Model.Tablero;
+import metricas.demo.Service.EtiquetaS;
+import metricas.demo.Service.TableroS;
 import metricas.demo.Validations.OnCreate;
 import metricas.demo.Validations.OnUpdate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,43 +26,42 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 /**
  *
  * @author Ruisu's
  */
 @RestController
-@RequestMapping("/api/color")
+@RequestMapping("/api/etiqueta")
 @CrossOrigin
-public class ColorC {
+public class EtiquetaC {
     
     @Autowired
-    private ColorS colorS;
+    private EtiquetaS etiquetaS;
     
     @GetMapping("/all")
-    public ResponseEntity<List<Color>> getAll(){
-        return ResponseEntity.status(HttpStatus.OK).body(colorS.getAll());
+    public ResponseEntity<List<Etiqueta>> getAll(){
+        return ResponseEntity.status(HttpStatus.OK).body(etiquetaS.getAll());
     }
     
     @GetMapping("/id/{id}")
-    public ResponseEntity<Color> getById(@PathVariable("id") Integer id){
-        return ResponseEntity.status(HttpStatus.OK).body(colorS.getById(id));
+    public ResponseEntity<Etiqueta> getById(@PathVariable("id") Integer id){
+        return ResponseEntity.status(HttpStatus.OK).body(etiquetaS.getById(id));
     }
     
     @PostMapping("/create")
-    public ResponseEntity<Color> createColor(@Validated(OnCreate.class) @RequestBody Color color){
-        return ResponseEntity.status(HttpStatus.CREATED).body(colorS.createColor(color));
+    public ResponseEntity<Etiqueta> createEtiqueta(@Validated(OnCreate.class) @RequestBody Etiqueta etiqueta){
+        return ResponseEntity.status(HttpStatus.CREATED).body(etiquetaS.createEtiqueta(etiqueta));
     }
     
     @PutMapping("/update")
-    public ResponseEntity<Color> updateColor(@Validated(OnUpdate.class) @RequestBody Color color){
-        return ResponseEntity.status(HttpStatus.CREATED).body(colorS.updateColor(color));
+    public ResponseEntity<Etiqueta> updateEtiqueta(@Validated(OnUpdate.class) @RequestBody Etiqueta etiqueta){
+        return ResponseEntity.status(HttpStatus.CREATED).body(etiquetaS.updateEtiqueta(etiqueta));
     }
     
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteColor(@PathVariable("id") Integer id){
-        colorS.deleteColor(id);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Se elimino el color con id: "+id);
+    public ResponseEntity<String> deleteEtiqueta(@PathVariable("id") Integer id){
+        etiquetaS.deleteEtiqueta(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Se elimino el rol con id: "+id);
     }
     
 }

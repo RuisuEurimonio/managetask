@@ -22,7 +22,6 @@ public class ColorR {
     @Autowired
     private ColorJR colorJR;
     
-    
     public List<Color> getAll(){
         return colorJR.findAll();
     }
@@ -31,12 +30,12 @@ public class ColorR {
         return colorJR.findById(id);
     }
     
-    public Color createColor(Color country){
-        return colorJR.save(country);
+    public Color createColor(Color color){
+        return colorJR.save(color);
     }
     
-    public Color updateColor(Color country){
-        return colorJR.save(country);
+    public Color updateColor(Color color){
+        return colorJR.save(color);
     }
     
     public void deleteColor(int id){

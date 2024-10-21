@@ -40,9 +40,5 @@ public class handleErrors {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error.getMessage());
     }
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<String> handleExceptionCustom(Exception error){
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ha sucedido un error");
-    }
-    
+
 }
