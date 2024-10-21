@@ -61,7 +61,7 @@ public class EtiquetaC {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteEtiqueta(@PathVariable("id") Integer id){
         etiquetaS.deleteEtiqueta(id);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Se elimino el rol con id: "+id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Se elimino la etiqueta con id: "+id);
     }
     
 }

@@ -59,7 +59,7 @@ public class TableroC {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteTablero(@PathVariable("id") Integer id){
         tableroS.deleteTablero(id);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Se elimino el rol con id: "+id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Se elimino el tablero con id: "+id);
     }
     
     

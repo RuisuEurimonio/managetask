@@ -5,15 +5,19 @@
  */
 package metricas.demo.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import java.util.List;
 import lombok.Data;
 import metricas.demo.Validations.OnCreate;
 import metricas.demo.Validations.OnUpdate;
@@ -44,4 +48,7 @@ public class Estado {
     @NotNull(message = "Ingrese una descripcion", groups = OnCreate.class)
     private String description;
     
+    @OneToMany(mappedBy = "estado")
+    @JsonIgnoreProperties("estado")
+    private List<Tarjeta> tarjetas;
 }

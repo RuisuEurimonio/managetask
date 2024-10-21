@@ -53,7 +53,5 @@ public class EtiquetaS {
         etiquetaR.getById(id).orElseThrow(()-> new CustomException("No se encontro el tablero"));
         etiquetaR.deleteTablero(id);
     }
-    
-    
-    
+   
 }

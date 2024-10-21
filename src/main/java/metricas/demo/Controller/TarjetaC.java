@@ -6,10 +6,10 @@
 package metricas.demo.Controller;
 
 import java.util.List;
-import metricas.demo.Model.Estado;
-import metricas.demo.Model.Lista;
-import metricas.demo.Service.EstadoS;
-import metricas.demo.Service.ListaS;
+import metricas.demo.Model.Etiqueta;
+import metricas.demo.Model.Tarjeta;
+import metricas.demo.Service.EtiquetaS;
+import metricas.demo.Service.TarjetaS;
 import metricas.demo.Validations.OnCreate;
 import metricas.demo.Validations.OnUpdate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,38 +31,37 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Ruisu's
  */
 @RestController
-@RequestMapping("/api/lista")
+@RequestMapping("/api/tarjeta")
 @CrossOrigin
-public class ListaC {
+public class TarjetaC {
     
     @Autowired
-    private ListaS listaS;
+    private TarjetaS tarjetaS;
     
     @GetMapping("/all")
-    public ResponseEntity<List<Lista>> getAll(){
-        return ResponseEntity.status(HttpStatus.OK).body(listaS.getAll());
+    public ResponseEntity<List<Tarjeta>> getAll(){
+        return ResponseEntity.status(HttpStatus.OK).body(tarjetaS.getAll());
     }
     
     @GetMapping("/id/{id}")
-    public ResponseEntity<Lista> getById(@PathVariable("id") Integer id){
-        return ResponseEntity.status(HttpStatus.OK).body(listaS.getById(id));
+    public ResponseEntity<Tarjeta> getById(@PathVariable("id") Integer id){
+        return ResponseEntity.status(HttpStatus.OK).body(tarjetaS.getById(id));
     }
     
     @PostMapping("/create")
-    public ResponseEntity<Lista> createColor(@Validated(OnCreate.class) @RequestBody Lista lista){
-        return ResponseEntity.status(HttpStatus.CREATED).body(listaS.createLista(lista));
+    public ResponseEntity<Tarjeta> createTarjeta(@Validated(OnCreate.class) @RequestBody Tarjeta tarjeta){
+        return ResponseEntity.status(HttpStatus.CREATED).body(tarjetaS.createTarjeta(tarjeta));
     }
     
     @PutMapping("/update")
-    public ResponseEntity<Lista> updateColor(@Validated(OnUpdate.class) @RequestBody Lista lista){
-        return ResponseEntity.status(HttpStatus.CREATED).body(listaS.updateLista(lista));
+    public ResponseEntity<Tarjeta> updateTarjeta(@Validated(OnUpdate.class) @RequestBody Tarjeta tarjeta){
+        return ResponseEntity.status(HttpStatus.CREATED).body(tarjetaS.updateTarjeta(tarjeta));
     }
     
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteColor(@PathVariable("id") Integer id){
-        listaS.deleteLista(id);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Se elimino la lista con id: "+id);
+    public ResponseEntity<String> deleteTarjeta(@PathVariable("id") Integer id){
+        tarjetaS.deleteTarjeta(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Se elimino la tarjeta con id: "+id);
     }
-    
     
 }
