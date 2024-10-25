@@ -9,6 +9,6 @@ package metricas.demo.Validations;
  *
  * @author Ruisu's
  */
-public interface OnCreate {
+public interface onCreate {
     
 }

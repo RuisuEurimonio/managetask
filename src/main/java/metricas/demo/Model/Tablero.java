@@ -20,9 +20,9 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDateTime;
 import lombok.Data;
-import metricas.demo.Validations.OnCreate;
-import metricas.demo.Validations.OnUpdate;
 import org.hibernate.annotations.CreationTimestamp;
+import metricas.demo.Validations.onCreate;
+import metricas.demo.Validations.onUpdate;
 
 /**
  *
@@ -39,15 +39,15 @@ public class Tablero {
     private Integer id;
     
     @Column(name = "nombre", nullable = false)
-    @Size(min = 5, max = 45, message = "Ingrese un nombre valido", groups = {OnUpdate.class, OnCreate.class})
-    @NotBlank(message = "Ingrese un nombre", groups = OnCreate.class)
-    @NotNull(message = "Ingrese un nombre", groups = OnCreate.class)
+    @Size(min = 5, max = 45, message = "Ingrese un nombre valido", groups = {onUpdate.class, onCreate.class})
+    @NotBlank(message = "Ingrese un nombre", groups = onCreate.class)
+    @NotNull(message = "Ingrese un nombre", groups = onCreate.class)
     private String name;
     
     @Column(name = "descripcion", nullable = false)
-    @Size(min = 5, max = 200, message = "Ingrese una descripcion valida", groups = {OnUpdate.class, OnCreate.class})
-    @NotBlank(message = "Ingrese una descripcion", groups = OnCreate.class)
-    @NotNull(message = "Ingrese una descripcion", groups = OnCreate.class)
+    @Size(min = 5, max = 200, message = "Ingrese una descripcion valida", groups = {onUpdate.class, onCreate.class})
+    @NotBlank(message = "Ingrese una descripcion", groups = onCreate.class)
+    @NotNull(message = "Ingrese una descripcion", groups = onCreate.class)
     private String description;
     
     @Column(name = "fechaCreacion", nullable = false)

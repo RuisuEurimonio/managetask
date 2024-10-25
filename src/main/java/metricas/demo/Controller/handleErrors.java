@@ -8,13 +8,13 @@ package metricas.demo.Controller;
 import java.util.HashMap;
 import java.util.Map;
 import metricas.demo.CustomExceptions.CustomException;
+import org.hibernate.PropertyValueException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-
 /**
  *
  * @author Ruisu's
@@ -41,4 +41,8 @@ public class handleErrors {
     }
 
 
+    @ExceptionHandler(PropertyValueException.class)
+    public ResponseEntity<String> handleException(CustomException error){
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Verifique los datos ingresados");
+    }
 }

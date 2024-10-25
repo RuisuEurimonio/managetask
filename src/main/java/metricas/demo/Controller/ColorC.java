@@ -8,8 +8,6 @@ package metricas.demo.Controller;
 import java.util.List;
 import metricas.demo.Model.Color;
 import metricas.demo.Service.ColorS;
-import metricas.demo.Validations.OnCreate;
-import metricas.demo.Validations.OnUpdate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +21,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import metricas.demo.Validations.onCreate;
+import metricas.demo.Validations.onUpdate;
 
 
 /**
@@ -48,12 +48,12 @@ public class ColorC {
     }
     
     @PostMapping("/create")
-    public ResponseEntity<Color> createColor(@Validated(OnCreate.class) @RequestBody Color color){
+    public ResponseEntity<Color> createColor(@Validated(onCreate.class) @RequestBody Color color){
         return ResponseEntity.status(HttpStatus.CREATED).body(colorS.createColor(color));
     }
     
     @PutMapping("/update")
-    public ResponseEntity<Color> updateColor(@Validated(OnUpdate.class) @RequestBody Color color){
+    public ResponseEntity<Color> updateColor(@Validated(onUpdate.class) @RequestBody Color color){
         return ResponseEntity.status(HttpStatus.CREATED).body(colorS.updateColor(color));
     }
     

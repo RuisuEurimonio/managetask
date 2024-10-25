@@ -10,8 +10,6 @@ import metricas.demo.Model.Etiqueta;
 import metricas.demo.Model.Tarjeta;
 import metricas.demo.Service.EtiquetaS;
 import metricas.demo.Service.TarjetaS;
-import metricas.demo.Validations.OnCreate;
-import metricas.demo.Validations.OnUpdate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +23,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import metricas.demo.Validations.onCreate;
+import metricas.demo.Validations.onUpdate;
 
 /**
  *
@@ -49,12 +49,12 @@ public class TarjetaC {
     }
     
     @PostMapping("/create")
-    public ResponseEntity<Tarjeta> createTarjeta(@Validated(OnCreate.class) @RequestBody Tarjeta tarjeta){
+    public ResponseEntity<Tarjeta> createTarjeta(@Validated(onCreate.class) @RequestBody Tarjeta tarjeta){
         return ResponseEntity.status(HttpStatus.CREATED).body(tarjetaS.createTarjeta(tarjeta));
     }
     
     @PutMapping("/update")
-    public ResponseEntity<Tarjeta> updateTarjeta(@Validated(OnUpdate.class) @RequestBody Tarjeta tarjeta){
+    public ResponseEntity<Tarjeta> updateTarjeta(@Validated(onUpdate.class) @RequestBody Tarjeta tarjeta){
         return ResponseEntity.status(HttpStatus.CREATED).body(tarjetaS.updateTarjeta(tarjeta));
     }
     

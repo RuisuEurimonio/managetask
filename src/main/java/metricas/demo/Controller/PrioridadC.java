@@ -8,8 +8,6 @@ package metricas.demo.Controller;
 import java.util.List;
 import metricas.demo.Model.Prioridad;
 import metricas.demo.Service.PrioridadS;
-import metricas.demo.Validations.OnCreate;
-import metricas.demo.Validations.OnUpdate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +21,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import metricas.demo.Validations.onCreate;
+import metricas.demo.Validations.onUpdate;
 
 /**
  *
@@ -47,12 +47,12 @@ public class PrioridadC {
     }
     
     @PostMapping("/create")
-    public ResponseEntity<Prioridad> createColor(@Validated(OnCreate.class) @RequestBody Prioridad prioridad){
+    public ResponseEntity<Prioridad> createColor(@Validated(onCreate.class) @RequestBody Prioridad prioridad){
         return ResponseEntity.status(HttpStatus.CREATED).body(prioridadS.createLista(prioridad));
     }
     
     @PutMapping("/update")
-    public ResponseEntity<Prioridad> updateColor(@Validated(OnUpdate.class) @RequestBody Prioridad prioridad){
+    public ResponseEntity<Prioridad> updateColor(@Validated(onUpdate.class) @RequestBody Prioridad prioridad){
         return ResponseEntity.status(HttpStatus.CREATED).body(prioridadS.updateLista(prioridad));
     }
     

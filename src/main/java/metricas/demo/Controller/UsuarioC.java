@@ -8,8 +8,6 @@ package metricas.demo.Controller;
 import java.util.List;
 import metricas.demo.Model.Usuario;
 import metricas.demo.Service.UsuarioS;
-import metricas.demo.Validations.OnCreate;
-import metricas.demo.Validations.OnUpdate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +21,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import metricas.demo.Validations.onCreate;
+import metricas.demo.Validations.onUpdate;
 
 /**
  *
@@ -47,12 +47,12 @@ public class UsuarioC {
     }
     
     @PostMapping("/create")
-    public ResponseEntity<Usuario> createTarjeta(@Validated(OnCreate.class) @RequestBody Usuario usuario){
+    public ResponseEntity<Usuario> createTarjeta(@Validated(onCreate.class) @RequestBody Usuario usuario){
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioS.createUsuario(usuario));
     }
     
     @PutMapping("/update")
-    public ResponseEntity<Usuario> updateTarjeta(@Validated(OnUpdate.class) @RequestBody Usuario usuario){
+    public ResponseEntity<Usuario> updateTarjeta(@Validated(onUpdate.class) @RequestBody Usuario usuario){
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioS.updateUsuario(usuario));
     }
     

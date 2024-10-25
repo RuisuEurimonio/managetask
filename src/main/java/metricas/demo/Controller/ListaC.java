@@ -10,8 +10,6 @@ import metricas.demo.Model.Estado;
 import metricas.demo.Model.Lista;
 import metricas.demo.Service.EstadoS;
 import metricas.demo.Service.ListaS;
-import metricas.demo.Validations.OnCreate;
-import metricas.demo.Validations.OnUpdate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +23,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import metricas.demo.Validations.onCreate;
+import metricas.demo.Validations.onUpdate;
 
 /**
  *
@@ -49,12 +49,12 @@ public class ListaC {
     }
     
     @PostMapping("/create")
-    public ResponseEntity<Lista> createColor(@Validated(OnCreate.class) @RequestBody Lista lista){
+    public ResponseEntity<Lista> createColor(@Validated(onCreate.class) @RequestBody Lista lista){
         return ResponseEntity.status(HttpStatus.CREATED).body(listaS.createLista(lista));
     }
     
     @PutMapping("/update")
-    public ResponseEntity<Lista> updateColor(@Validated(OnUpdate.class) @RequestBody Lista lista){
+    public ResponseEntity<Lista> updateColor(@Validated(onUpdate.class) @RequestBody Lista lista){
         return ResponseEntity.status(HttpStatus.CREATED).body(listaS.updateLista(lista));
     }
     

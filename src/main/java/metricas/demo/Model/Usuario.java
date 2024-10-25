@@ -14,12 +14,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
-import metricas.demo.Validations.OnCreate;
-import metricas.demo.Validations.OnUpdate;
+import metricas.demo.Validations.onCreate;
+import metricas.demo.Validations.onUpdate;
 
 /**
  *
@@ -36,21 +37,21 @@ public class Usuario {
     private Integer id;
     
     @Column(name = "nombre", nullable = false)
-    @Size(min = 5, max = 45, message = "Ingrese un nombre valido", groups = {OnUpdate.class, OnCreate.class})
-    @NotBlank(message = "Ingrese un nombre", groups = OnCreate.class)
-    @NotNull(message = "Ingrese un nombre", groups = OnCreate.class)
+    @Size(min = 5, max = 45, message = "Ingrese un nombre valido", groups = {onUpdate.class, onCreate.class})
+    @NotBlank(message = "Ingrese un nombre", groups = onCreate.class)
+    @NotNull(message = "Ingrese un nombre", groups = onCreate.class)
     private String name;
     
     @Column(name = "email", nullable = false)
-    @Size(min = 5, max = 200, message = "Ingrese una descripcion valida", groups = {OnUpdate.class, OnCreate.class})
-    @NotBlank(message = "Ingrese una descripcion", groups = OnCreate.class)
-    @NotNull(message = "Ingrese una descripcion", groups = OnCreate.class)
+    @Email(message = "Ingrese un correo valido")
+    @NotBlank(message = "Ingrese un email", groups = onCreate.class)
+    @NotNull(message = "Ingrese un email", groups = onCreate.class)
     private String email;
     
     @Column(name = "contrasena", nullable = false)
-    @Size(min = 5, max = 200, message = "Ingrese una descripcion valida", groups = {OnUpdate.class, OnCreate.class})
-    @NotBlank(message = "Ingrese una descripcion", groups = OnCreate.class)
-    @NotNull(message = "Ingrese una descripcion", groups = OnCreate.class)
+    @Size(min = 5, max = 200, message = "Ingrese una contraseña valida", groups = {onUpdate.class, onCreate.class})
+    @NotBlank(message = "Ingrese una contraseña", groups = onCreate.class)
+    @NotNull(message = "Ingrese una contraseña", groups = onCreate.class)
     private String password;
 
     @ManyToOne()

@@ -19,8 +19,8 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import metricas.demo.Model.Color;
 import lombok.Data;
-import metricas.demo.Validations.OnCreate;
-import metricas.demo.Validations.OnUpdate;
+import metricas.demo.Validations.onCreate;
+import metricas.demo.Validations.onUpdate;
 
 /**
  *
@@ -36,10 +36,11 @@ public class Etiqueta {
     @Column(name = "idEtiqueta", nullable = false)
     private Integer id;
     
-    @Column(name = "nombre", nullable = false)
-    @Size(min = 5, max = 45, message = "Ingrese un nombre valido", groups = {OnUpdate.class, OnCreate.class})
-    @NotBlank(message = "Ingrese un nombre", groups = OnCreate.class)
-    @NotNull(message = "Ingrese un nombre", groups = OnCreate.class)
+    
+    @Column(name="nombre", nullable = false)
+    @Size(min=3,max=30, message="Nombre invalido", groups = {onCreate.class, onUpdate.class})
+    @NotNull(message="No se ingreso un nombre", groups = onCreate.class)
+    @NotBlank(message="No se ingreso un nombre", groups = onCreate.class)
     private String name;
     
     @ManyToOne()

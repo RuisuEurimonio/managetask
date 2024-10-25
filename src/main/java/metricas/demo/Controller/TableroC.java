@@ -10,8 +10,6 @@ import metricas.demo.Model.Rol;
 import metricas.demo.Model.Tablero;
 import metricas.demo.Service.RolS;
 import metricas.demo.Service.TableroS;
-import metricas.demo.Validations.OnCreate;
-import metricas.demo.Validations.OnUpdate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +22,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import metricas.demo.Validations.onCreate;
+import metricas.demo.Validations.onUpdate;
 
 /**
  *
@@ -47,12 +47,12 @@ public class TableroC {
     }
     
     @PostMapping("/create")
-    public ResponseEntity<Tablero> createTablero(@Validated(OnCreate.class) @RequestBody Tablero tablero){
+    public ResponseEntity<Tablero> createTablero(@Validated(onCreate.class) @RequestBody Tablero tablero){
         return ResponseEntity.status(HttpStatus.CREATED).body(tableroS.createTablero(tablero));
     }
     
     @PutMapping("/update")
-    public ResponseEntity<Tablero> updateTablero(@Validated(OnUpdate.class) @RequestBody Tablero tablero){
+    public ResponseEntity<Tablero> updateTablero(@Validated(onUpdate.class) @RequestBody Tablero tablero){
         return ResponseEntity.status(HttpStatus.CREATED).body(tableroS.updateTablero(tablero));
     }
     

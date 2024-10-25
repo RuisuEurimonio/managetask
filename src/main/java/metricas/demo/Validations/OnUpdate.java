@@ -9,6 +9,6 @@ package metricas.demo.Validations;
  *
  * @author Ruisu's
  */
-public interface OnUpdate {
+public interface onUpdate {
     
 }

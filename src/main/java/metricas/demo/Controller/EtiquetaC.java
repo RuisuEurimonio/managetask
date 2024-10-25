@@ -10,12 +10,10 @@ import metricas.demo.Model.Etiqueta;
 import metricas.demo.Model.Tablero;
 import metricas.demo.Service.EtiquetaS;
 import metricas.demo.Service.TableroS;
-import metricas.demo.Validations.OnCreate;
-import metricas.demo.Validations.OnUpdate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +23,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import metricas.demo.Validations.onCreate;
+import metricas.demo.Validations.onUpdate;
+import org.springframework.validation.annotation.Validated;
 
 /**
  *
@@ -49,12 +50,12 @@ public class EtiquetaC {
     }
     
     @PostMapping("/create")
-    public ResponseEntity<Etiqueta> createEtiqueta(@Validated(OnCreate.class) @RequestBody Etiqueta etiqueta){
+    public ResponseEntity<Etiqueta> createEtiqueta(@Validated(onCreate.class) @RequestBody Etiqueta etiqueta){
         return ResponseEntity.status(HttpStatus.CREATED).body(etiquetaS.createEtiqueta(etiqueta));
     }
     
     @PutMapping("/update")
-    public ResponseEntity<Etiqueta> updateEtiqueta(@Validated(OnUpdate.class) @RequestBody Etiqueta etiqueta){
+    public ResponseEntity<Etiqueta> updateEtiqueta(@Validated(onUpdate.class) @RequestBody Etiqueta etiqueta){
         return ResponseEntity.status(HttpStatus.CREATED).body(etiquetaS.updateEtiqueta(etiqueta));
     }
     

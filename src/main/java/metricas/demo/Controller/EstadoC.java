@@ -8,8 +8,6 @@ package metricas.demo.Controller;
 import java.util.List;
 import metricas.demo.Model.Estado;
 import metricas.demo.Service.EstadoS;
-import metricas.demo.Validations.OnCreate;
-import metricas.demo.Validations.OnUpdate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +21,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import metricas.demo.Validations.onCreate;
+import metricas.demo.Validations.onUpdate;
 
 /**
  *
@@ -47,12 +47,12 @@ public class EstadoC {
     }
     
     @PostMapping("/create")
-    public ResponseEntity<Estado> createColor(@Validated(OnCreate.class) @RequestBody Estado estado){
+    public ResponseEntity<Estado> createColor(@Validated(onCreate.class) @RequestBody Estado estado){
         return ResponseEntity.status(HttpStatus.CREATED).body(estadoS.createEstado(estado));
     }
     
     @PutMapping("/update")
-    public ResponseEntity<Estado> updateColor(@Validated(OnUpdate.class) @RequestBody Estado estado){
+    public ResponseEntity<Estado> updateColor(@Validated(onUpdate.class) @RequestBody Estado estado){
         return ResponseEntity.status(HttpStatus.CREATED).body(estadoS.updateEstado(estado));
     }
     
