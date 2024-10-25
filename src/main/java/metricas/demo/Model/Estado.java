@@ -37,7 +37,7 @@ public class Estado {
     private Integer id;
     
     @Column(name = "nombre", nullable = false)
-    @Size(min = 5, max = 45, message = "Ingrese un nombre valido", groups = {OnUpdate.class, OnCreate.class})
+    @Size(min = 5, max = 45, message = "Ingrese un nombre valido")
     @NotBlank(message = "Ingrese un nombre", groups = OnCreate.class)
     @NotNull(message = "Ingrese un nombre", groups = OnCreate.class)
     private String name;
