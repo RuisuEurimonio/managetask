@@ -46,13 +46,18 @@ public class UsuarioC {
         return ResponseEntity.status(HttpStatus.OK).body(usuarioS.getById(id));
     }
     
+    @PostMapping("/login")
+    public ResponseEntity<Usuario> login(@Validated(OnUpdate.class)@RequestBody Usuario usuario) throws Exception{
+        return ResponseEntity.status(HttpStatus.OK).body(usuarioS.validateCredentials(usuario));
+    }
+    
     @PostMapping("/create")
-    public ResponseEntity<Usuario> createTarjeta(@Validated(OnCreate.class) @RequestBody Usuario usuario){
+    public ResponseEntity<Usuario> createTarjeta(@Validated(OnCreate.class) @RequestBody Usuario usuario) throws Exception{
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioS.createUsuario(usuario));
     }
     
     @PutMapping("/update")
-    public ResponseEntity<Usuario> updateTarjeta(@Validated(OnUpdate.class) @RequestBody Usuario usuario){
+    public ResponseEntity<Usuario> updateTarjeta(@Validated(OnUpdate.class) @RequestBody Usuario usuario) throws Exception{
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioS.updateUsuario(usuario));
     }
     
