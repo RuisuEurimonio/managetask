@@ -49,12 +49,16 @@ public class UsuarioS {
     }
     
     public Usuario validateCredentials(Usuario usuario) throws Exception{
-        return usuarioR.ValidateCredentials(usuario.getEmail(), passwords.encrypt(usuario.getPassword())).orElseThrow(()-> new CustomException("Credenciales incorrectas."));
+        return usuarioR.validateCredentials(usuario.getEmail(), passwords.encrypt(usuario.getPassword())).orElseThrow(()-> new CustomException("Credenciales incorrectas."));
     }
     
     public Usuario createUsuario(Usuario usuario) throws Exception{
-        usuario.setPassword(passwords.encrypt(usuario.getPassword()));
-        return usuarioR.createUsuario(usuario);
+        Optional<Usuario> holas = usuarioR.validateEmail(usuario.getEmail());
+        if(holas.isEmpty()){
+            usuario.setPassword(passwords.encrypt(usuario.getPassword()));
+            return usuarioR.createUsuario(usuario);
+        }
+        throw new CustomException("El correo ya esta registrado");
     }
     
     public Usuario updateUsuario(Usuario usuario) throws Exception{

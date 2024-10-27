@@ -28,8 +28,12 @@ public class UsuarioR {
         return usuarioJR.findAll();
     }
     
-    public Optional<Usuario> ValidateCredentials(String email, String contrasena){
+    public Optional<Usuario> validateCredentials(String email, String contrasena){
         return usuarioJR.findByEmailAndPassword(email, contrasena);
+    }
+    
+    public Optional<Usuario> validateEmail(String email){
+        return usuarioJR.findByEmail(email);
     }
     
     public Optional<Usuario> getById(int id){
