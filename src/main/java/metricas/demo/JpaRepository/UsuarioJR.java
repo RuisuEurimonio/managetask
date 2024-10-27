@@ -5,6 +5,7 @@
  */
 package metricas.demo.JpaRepository;
 
+import java.util.Optional;
 import metricas.demo.Model.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -13,5 +14,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Ruisu's
  */
 public interface UsuarioJR extends JpaRepository<Usuario, Integer>{
+    
+    public Optional<Usuario> findByEmailAndPassword(String email, String password);
     
 }
