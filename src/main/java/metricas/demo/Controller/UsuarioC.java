@@ -52,7 +52,6 @@ public class UsuarioC {
     }
     
     @PostMapping("/create")
-
     public ResponseEntity<Usuario> createTarjeta(@Validated(onCreate.class) @RequestBody Usuario usuario) throws Exception{
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioS.createUsuario(usuario));
     }

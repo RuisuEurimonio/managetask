@@ -36,7 +36,7 @@ public class Prioridad {
     private Integer id;
     
     @Column(name = "nombre", nullable = false)
-    @Size(min = 5, max = 45, message = "Ingrese un nombre valido", groups = {onUpdate.class, onCreate.class})
+    @Size(min = 3, max = 45, message = "Ingrese un nombre valido", groups = {onUpdate.class, onCreate.class})
     @NotBlank(message = "Ingrese un nombre", groups = onCreate.class)
     @NotNull(message = "Ingrese un nombre", groups = onCreate.class)
     private String name;
